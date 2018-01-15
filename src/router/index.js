@@ -5,11 +5,9 @@ import Drawing from '@/components/Drawing'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Drawing',
-      component: Drawing
-    }
-  ]
+  routes: [{
+    path: '/',
+    name: 'Drawing',
+    component: Drawing
+  }]
 })
