@@ -40,11 +40,8 @@
         <div>
           <v-divider></v-divider>
           <v-layout row justify-space-between>
-            <div>
-              <Palette msg="test"/>
-              <v-btn icon>
-                <v-icon class="grey--text text--darken-1">palette</v-icon>
-              </v-btn>
+            <v-layout row>
+              <Palette />
               <v-menu :nudge-width="100">
                 <v-toolbar-title slot="activator" style="margin-left: 0px">
                   <v-btn icon>
@@ -61,7 +58,7 @@
                         </v-list-tile> -->
                 </v-list>
               </v-menu>
-            </div>
+            </v-layout>
             <div>
               <v-btn icon>
                 <v-icon class="grey--text text--darken-1">undo</v-icon>
