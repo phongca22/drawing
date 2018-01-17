@@ -2,9 +2,10 @@ import COLORS from 'vuetify/es5/util/colors'
 
 export default {
   name: 'palette',
+  props: ['callback'],
   data () {
     return {
-      drawer: false,
+      open: false,
       colorNames: [{
         name: '50',
         pick: 'lighten5'
@@ -85,7 +86,16 @@ export default {
   },
   methods: {
     selectColor: function(color) {
-      console.log(color)
+      this.selectedColor = color;
+      this.callback(color);
+      this.open = false;
+    },
+    isSelectedColor: function(c) {
+      if (!this.selectedColor) return false;
+      return this.selectedColor.value === c.value;
+    },
+    getSelectedColor: function() {
+      return this.selectedColor ? this.selectedColor.value : "";
     }
   }
 }

@@ -35,12 +35,14 @@
     </v-toolbar>
     <v-flex style="background: #EBE7E4" class="layout column">
       <div class="ma-3 elevation-2 flex layout column" style="background: #fff">
-        <div class="flex"></div>
+        <v-layout column flex>
+          <Paper :getColor="getColor"></Paper>
+        </v-layout>
         <div>
           <v-divider></v-divider>
-          <v-layout row justify-space-between>
-            <v-layout row>
-              <Palette />
+          <v-layout row>
+            <v-layout row flex>
+              <Palette :callback="colorChanged"/>
               <v-menu :nudge-width="100">
                 <v-toolbar-title slot="activator" style="margin-left: 0px">
                   <v-btn icon>
@@ -51,7 +53,7 @@
                 </v-toolbar-title>
               </v-menu>
             </v-layout>
-            <div>
+            <div class="flex">
               <v-btn icon>
                 <v-icon class="grey--text text--darken-1">undo</v-icon>
               </v-btn>
@@ -59,7 +61,7 @@
                 <v-icon class="grey--text text--darken-1">redo</v-icon>
               </v-btn>
             </div>
-            <div>
+            <div class="flex">
               <v-btn icon>
                 <v-icon class="grey--text text--darken-1">account_circle</v-icon>
               </v-btn>
@@ -72,15 +74,7 @@
 </v-app>
 </template>
 
-<script>
-import Palette from './editor/palette/Palette.vue'
-export default {
-  name: 'drawing',
-  components: {
-    Palette
-  }
-}
-</script>
+<script src="./drawing.js"></script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
