@@ -42,7 +42,7 @@
           <v-divider></v-divider>
           <v-layout row>
             <v-layout row flex>
-              <Palette :callback="colorChanged"/>
+              <Palette :colorChanged="colorChanged" :makeUndo="makeUndo"/>
               <v-menu :nudge-width="100">
                 <v-toolbar-title slot="activator" style="margin-left: 0px">
                   <v-btn icon>
@@ -54,7 +54,7 @@
               </v-menu>
             </v-layout>
             <div class="flex">
-              <v-btn icon>
+              <v-btn icon v-on:click="makeUndo()" :disabled="disableUndo">
                 <v-icon class="grey--text text--darken-1">undo</v-icon>
               </v-btn>
               <v-btn icon>

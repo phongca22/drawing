@@ -2,7 +2,7 @@ import COLORS from 'vuetify/es5/util/colors'
 
 export default {
   name: 'palette',
-  props: ['callback'],
+  props: ['colorChanged'],
   data () {
     return {
       open: false,
@@ -87,7 +87,7 @@ export default {
   methods: {
     selectColor: function(color) {
       this.selectedColor = color;
-      this.callback(color);
+      this.colorChanged(color);
       this.open = false;
     },
     isSelectedColor: function(c) {
