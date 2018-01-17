@@ -35,8 +35,7 @@
     </v-toolbar>
     <v-flex style="background: #EBE7E4" class="layout column">
       <div class="ma-3 elevation-2 flex layout column" style="background: #fff">
-        <div class="flex">
-        </div>
+        <div class="flex"></div>
         <div>
           <v-divider></v-divider>
           <v-layout row justify-space-between>
@@ -50,13 +49,6 @@
                   <v-icon style="margin-left: -24px;
                                 margin-top: 6px;">arrow_drop_down</v-icon>
                 </v-toolbar-title>
-                <v-list>
-                  <!-- <v-list-tile v-for="item in items" :key="item" @click="">
-                                <v-btn icon>
-                                <v-icon class="grey--text text--darken-1">mode_edit</v-icon>
-                            </v-btn>
-                        </v-list-tile> -->
-                </v-list>
               </v-menu>
             </v-layout>
             <div>
@@ -83,6 +75,7 @@
 <script>
 import Palette from './editor/palette/Palette.vue'
 export default {
+  name: 'drawing',
   components: {
     Palette
   }

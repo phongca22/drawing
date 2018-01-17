@@ -38,22 +38,28 @@ export default {
       }, {
         name: 'A100',
         pick: 'accent1',
-        isAccent: true
+        accent: 100
       }, {
         name: 'A200',
-        pick: 'accent2'
+        pick: 'accent2',
+        accent: 200
       }, {
         name: 'A400',
-        pick: 'accent3'
+        pick: 'accent3',
+        accent: 400
       }, {
         name: 'A700',
-        pick: 'accent4'
-      }]
+        pick: 'accent4',
+        accent: 700
+      }],
+      selectedColor: null
     }
   },
   computed: {
     colors: function() {
-      var order = ['red'];
+      var order = ['red', 'pink', 'purple', 'deepPurple', 'indigo', 'blue', 'lightBlue', 'cyan',
+        'tear', 'green', 'lightGreen', 'lime', 'yellow', 'amber', 'orange', 'deepOrange', 'brown',
+        'grey', 'blueGrey'];
       var map = this.colorNames;
       var result = [];
       var id = 1;
@@ -74,8 +80,12 @@ export default {
         }
       }
 
-      console.log(result)
       return result;
+    }
+  },
+  methods: {
+    selectColor: function(color) {
+      console.log(color)
     }
   }
 }
