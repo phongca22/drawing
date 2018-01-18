@@ -57,7 +57,7 @@
               <v-btn icon v-on:click="makeUndo()" :disabled="disableUndo">
                 <v-icon class="grey--text text--darken-1">undo</v-icon>
               </v-btn>
-              <v-btn icon>
+              <v-btn icon v-on:click="makeRedo()" :disabled="disableRedo">
                 <v-icon class="grey--text text--darken-1">redo</v-icon>
               </v-btn>
             </div>

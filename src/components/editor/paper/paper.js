@@ -9,23 +9,32 @@ export default {
       currentPath: null,
       paper: null,
       allPaths: [],
-      undoCount: 0
+      redoList: []
     }
   },
   created: function () {
     EventBus.$on('makeUndo', () => {
-      this.undoCount++;
-      if (this.undoCount > 3) {
-        return
-      }
-
-      if (this.allPaths.length > 0) {
-        this.allPaths.pop().remove();
-      }
-
-      if (this.allPaths.length == 0 || this.undoCount == 3) {
+      var p = this.allPaths.pop();
+      p.remove();
+      this.redoList.push(p);
+      if (this.redoList.length == 3) {
         this.disableUndo();
       }
+
+      this.enableRedo();
+    });
+
+    EventBus.$on('makeRedo', () => {
+      var p = this.redoList.pop();
+      var layer = this.paper.project.layers[0];
+      layer.addChild(p);
+      this.allPaths.push(p);
+
+      if (this.redoList.length == 0) {
+        this.disableRedo();
+      }
+
+      this.enableUndo();
     });
   },
   mounted: function() {
@@ -43,7 +52,8 @@ export default {
       if (thiz.currentPath.length > 0) {
         thiz.allPaths.push(thiz.currentPath);
         thiz.enableUndo();
-        thiz.undoCount = 0;
+        thiz.redoList = [];
+        thiz.disableRedo();
       } else {
         thiz.disableUndo();
       }
@@ -55,6 +65,12 @@ export default {
     },
     enableUndo: function() {
       EventBus.$emit('enableUndo');
+    },
+    enableRedo: function() {
+      EventBus.$emit('enableRedo');
+    },
+    disableRedo: function() {
+      EventBus.$emit('disableRedo');
     }
   }
 }

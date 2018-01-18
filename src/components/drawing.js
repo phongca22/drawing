@@ -7,7 +7,8 @@ export default {
   data: function() {
     return {
       color: {value: "#000"},
-      disableUndo: true
+      disableUndo: true,
+      disableRedo: true,
     }
   },
   components: {
@@ -22,6 +23,14 @@ export default {
     EventBus.$on('enableUndo', () => {
       this.disableUndo = false;
     });
+
+    EventBus.$on('disableRedo', () => {
+      this.disableRedo = true;
+    });
+
+    EventBus.$on('enableRedo', () => {
+      this.disableRedo = false;
+    });
   },
   methods: {
     colorChanged: function(c) {
@@ -32,6 +41,9 @@ export default {
     },
     makeUndo: function() {
       EventBus.$emit('makeUndo');
+    },
+    makeRedo: function() {
+      EventBus.$emit('makeRedo');
     }
   }
 }
