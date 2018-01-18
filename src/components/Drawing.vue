@@ -43,17 +43,8 @@
           <v-layout row>
             <v-layout row flex>
               <Palette :colorChanged="colorChanged" :makeUndo="makeUndo"/>
-              <v-menu :nudge-width="100">
-                <v-toolbar-title slot="activator" style="margin-left: 0px">
-                  <v-btn icon>
-                    <v-icon class="grey--text text--darken-1">mode_edit</v-icon>
-                  </v-btn>
-                  <v-icon style="margin-left: -24px;
-                                margin-top: 6px;">arrow_drop_down</v-icon>
-                </v-toolbar-title>
-              </v-menu>
             </v-layout>
-            <div class="flex">
+            <div>
               <v-btn icon v-on:click="makeUndo()" :disabled="disableUndo">
                 <v-icon class="grey--text text--darken-1">undo</v-icon>
               </v-btn>
@@ -61,11 +52,11 @@
                 <v-icon class="grey--text text--darken-1">redo</v-icon>
               </v-btn>
             </div>
-            <div class="flex">
+            <v-layout column class="flex" align-end>
               <v-btn icon>
                 <v-icon class="grey--text text--darken-1">account_circle</v-icon>
               </v-btn>
-            </div>
+            </v-layout>
           </v-layout>
         </div>
       </div>
