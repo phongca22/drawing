@@ -52,10 +52,8 @@
                 <v-icon class="grey--text text--darken-1">redo</v-icon>
               </v-btn>
             </div>
-            <v-layout column class="flex" align-end>
-              <v-btn icon>
-                <v-icon class="grey--text text--darken-1">account_circle</v-icon>
-              </v-btn>
+            <v-layout row class="flex" align-center justify-end>
+              <LoginBtn />
             </v-layout>
           </v-layout>
         </div>
