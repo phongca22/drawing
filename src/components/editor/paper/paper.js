@@ -8,6 +8,8 @@ export default {
     return {
       currentPath: null,
       paper: null,
+      image: null,
+      imageLayer: null,
       allPaths: [],
       redoList: []
     }
@@ -35,6 +37,10 @@ export default {
       }
 
       this.enableUndo();
+    });
+
+    EventBus.$on("file.upload", (files) => {
+      this.initFileLayer(files[0]);
     });
   },
   mounted: function() {
@@ -71,6 +77,22 @@ export default {
     },
     disableRedo: function() {
       EventBus.$emit('disableRedo');
+    },
+    initFileLayer: function(f) {
+      if (!f) return;
+      var url = window.URL || window.webkitURL;
+      var src = url.createObjectURL(f);
+      if (this.imageLayer) {
+        this.imageLayer.remove();
+        this.image.remove();
+      }
+
+      this.imageLayer = new this.paper.Layer();
+      this.paper.project.addLayer(this.imageLayer);
+      this.image = new this.paper.Raster(src);
+      this.image.position = this.paper.view.center;
+      this.imageLayer.addChild(this.image);
+      this.imageLayer.sendToBack();
     }
   }
 }

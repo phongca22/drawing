@@ -1,8 +1,10 @@
+import {EventBus} from './bus/bus.js'
+import firebase from 'firebase'
+
 import Palette from './editor/palette/Palette.vue'
 import Paper from './editor/paper/Paper.vue'
-import {EventBus} from './bus/bus.js'
 import LoginBtn from './user/LoginBtn.vue'
-import firebase from 'firebase'
+import Uploader from './file/Uploader.vue'
 
 export default {
   name: 'drawing',
@@ -16,7 +18,8 @@ export default {
   components: {
     Palette,
     Paper,
-    LoginBtn
+    LoginBtn,
+    Uploader
   },
   created: function() {
     EventBus.$on('disableUndo', () => {

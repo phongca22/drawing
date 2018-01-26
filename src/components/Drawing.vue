@@ -26,9 +26,7 @@
       <v-btn icon>
         <v-icon>share</v-icon>
       </v-btn>
-      <v-btn icon>
-        <v-icon>file_upload</v-icon>
-      </v-btn>
+      <Uploader/>
       <v-btn icon>
         <v-icon>view_module</v-icon>
       </v-btn>
