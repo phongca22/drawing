@@ -5,6 +5,7 @@ import Palette from './editor/palette/Palette.vue'
 import Paper from './editor/paper/Paper.vue'
 import LoginBtn from './user/LoginBtn.vue'
 import Uploader from './file/Uploader.vue'
+import Collection from './collection/Collection.vue'
 
 export default {
   name: 'drawing',
@@ -19,7 +20,8 @@ export default {
     Palette,
     Paper,
     LoginBtn,
-    Uploader
+    Uploader,
+    Collection
   },
   created: function() {
     EventBus.$on('disableUndo', () => {

@@ -5,8 +5,7 @@
       :nudge-width="200"
       v-model="open"
       top
-      offset-y
-    >
+      offset-y>
       <v-btn flat icon slot="activator">
         <v-icon v-bind:style="{color: getSelectedColor()}">palette</v-icon>
       </v-btn>

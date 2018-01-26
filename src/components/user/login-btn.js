@@ -14,7 +14,9 @@ export default {
         id: 'facebook',
         name: 'Facebook',
         provider: new firebase.auth.FacebookAuthProvider()
-      }]
+      }],
+      isNotification: true,
+      isEmail: true
     }
   },
   methods: {

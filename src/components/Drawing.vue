@@ -27,9 +27,7 @@
         <v-icon>share</v-icon>
       </v-btn>
       <Uploader/>
-      <v-btn icon>
-        <v-icon>view_module</v-icon>
-      </v-btn>
+      <Collection/>
     </v-toolbar>
     <v-flex style="background: #EBE7E4" class="layout column">
       <div class="ma-3 elevation-2 flex layout column" style="background: #fff">
