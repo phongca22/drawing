@@ -1,17 +1,16 @@
 <template>
   <div>
-    <v-btn flat icon @click="open = !open">
-      <v-icon v-bind:style="{color: getSelectedColor()}">palette</v-icon>
-    </v-btn>
-    <v-navigation-drawer
+    <v-menu
+      :close-on-content-click="false"
+      :nudge-width="200"
       v-model="open"
-      light
-      absolute
-      hide-overlay
-      floating
-      width="568"
-      height="300">
-      <div>
+      top
+      offset-y
+    >
+      <v-btn flat icon slot="activator">
+        <v-icon v-bind:style="{color: getSelectedColor()}">palette</v-icon>
+      </v-btn>
+      <div style="background: #fff">
         <v-layout row class="mt-3">
           <div class="color-name ml-2"></div>
           <v-layout row v-for="cc in colorNames" :key="cc.name" class="color-box"
@@ -36,7 +35,7 @@
           </div>
         </v-layout>
       </div>
-    </v-navigation-drawer>
+    </v-menu>
   </div>
 </template>
 
