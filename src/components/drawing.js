@@ -3,7 +3,7 @@ import firebase from 'firebase'
 
 import Palette from './editor/palette/Palette.vue'
 import Paper from './editor/paper/Paper.vue'
-import LoginBtn from './user/LoginBtn.vue'
+import LoginBtn from './auth/LoginBtn.vue'
 import Uploader from './file/Uploader.vue'
 import Collection from './collection/Collection.vue'
 

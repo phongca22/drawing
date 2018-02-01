@@ -24,7 +24,7 @@ export default {
       this.menu = false;
 			firebase.auth().signInWithPopup(item.provider).then((result) => {
 				this.auth = result;
-			}).catch(function (error) {
+			}).catch((error) => {
 				console.log(error);
         this.auth = null;
 			});

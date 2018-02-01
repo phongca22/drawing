@@ -82,13 +82,13 @@ export default {
       if (!f) return;
       var url = window.URL || window.webkitURL;
       var src = url.createObjectURL(f);
-      if (this.imageLayer) {
-        this.imageLayer.remove();
-        this.image.remove();
+      if (!this.imageLayer) {
+        this.imageLayer = new this.paper.Layer({name: "bg"});
+        this.paper.project.addLayer(this.imageLayer);
+      } else {
+        this.imageLayer.removeChildren();
       }
 
-      this.imageLayer = new this.paper.Layer();
-      this.paper.project.addLayer(this.imageLayer);
       this.image = new this.paper.Raster(src);
       this.image.position = this.paper.view.center;
       this.imageLayer.addChild(this.image);
