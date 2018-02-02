@@ -3,9 +3,10 @@ import firebase from 'firebase'
 
 import Palette from './editor/palette/Palette.vue'
 import Paper from './editor/paper/Paper.vue'
-import LoginBtn from './auth/LoginBtn.vue'
+import Login from './auth/Login.vue'
 import Uploader from './file/Uploader.vue'
 import Collection from './collection/Collection.vue'
+import CollectionUpdater from './collection/Updater.vue'
 
 export default {
   name: 'drawing',
@@ -19,9 +20,10 @@ export default {
   components: {
     Palette,
     Paper,
-    LoginBtn,
+    Login,
     Uploader,
-    Collection
+    Collection,
+    CollectionUpdater
   },
   created: function() {
     EventBus.$on('disableUndo', () => {

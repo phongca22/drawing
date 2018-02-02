@@ -1,4 +1,4 @@
-<script src="./login-btn.js"></script>
+<script src="./login.js"></script>
 <template>
   <div>
     <v-menu

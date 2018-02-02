@@ -49,7 +49,8 @@
               </v-btn>
             </div>
             <v-layout row class="flex" align-center justify-end>
-              <LoginBtn />
+              <CollectionUpdater />
+              <Login />
             </v-layout>
           </v-layout>
         </div>

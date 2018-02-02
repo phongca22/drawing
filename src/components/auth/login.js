@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 
 export default {
-  name: 'loginBtn',
+  name: 'login',
   data () {
     return {
       menu: false,

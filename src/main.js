@@ -5,12 +5,27 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import firebase from 'firebase'
+import Toasted from 'vue-toasted'
 
 import 'vuetify/dist/vuetify.min.css'
 import 'mdi/css/materialdesignicons.min.css'
 
 Vue.config.productionTip = false
 Vue.use(Vuetify)
+Vue.use(Toasted)
+
+Vue.toasted.register('appSuccess', (payload) => {
+  if (payload.message) {
+    return payload.message
+  } else {
+    return 'Success'
+  }
+}, {
+  type: 'success',
+  icon: 'check',
+  position: 'bottom-right',
+  duration: 2000
+})
 
 firebase.initializeApp({
   apiKey: 'AIzaSyDa-ze_65ozwE0HZOAWWbemoozlHXfhK1k',
