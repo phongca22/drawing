@@ -10,7 +10,7 @@
         <v-icon>view_module</v-icon>
       </v-btn>
       <v-container fluid grid-list-md class="grey lighten-4"
-        style="width: 800px">
+        v-bind:style="{width: list.length * 250 + 'px'}">
         <v-layout row wrap>
           <v-flex
             v-bind="{ [`xs${card.flex}`]: true }"

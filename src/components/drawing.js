@@ -50,10 +50,10 @@ export default {
       return this.color;
     },
     makeUndo: function() {
-      EventBus.$emit('makeUndo');
+      EventBus.$emit('paper.undo');
     },
     makeRedo: function() {
-      EventBus.$emit('makeRedo');
+      EventBus.$emit('paper.redo');
     }
   }
 }

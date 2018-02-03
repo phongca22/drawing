@@ -7,7 +7,7 @@ export default {
       this.$refs.inputElement.click();
     },
     processFile: function() {
-      EventBus.$emit("file.upload", event.target.files);
+      EventBus.$emit("paper.upload", event.target.files);
     }
   }
 }

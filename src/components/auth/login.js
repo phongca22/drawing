@@ -39,7 +39,6 @@ export default {
   },
   created: function() {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user)
       this.auth = user || null;
 		});
   }

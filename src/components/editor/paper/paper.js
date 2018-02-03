@@ -18,7 +18,7 @@ export default {
     }
   },
   created: function () {
-    EventBus.$on('makeUndo', () => {
+    EventBus.$on('paper.undo', () => {
       var p = this.allPaths.pop();
       p.remove();
       this.redoList.push(p);
@@ -29,7 +29,7 @@ export default {
       this.enableRedo();
     });
 
-    EventBus.$on('makeRedo', () => {
+    EventBus.$on('paper.redo', () => {
       var p = this.redoList.pop();
       var layer = this.paper.project.layers[0];
       layer.addChild(p);
@@ -42,19 +42,19 @@ export default {
       this.enableUndo();
     });
 
-    EventBus.$on("file.upload", (files) => {
+    EventBus.$on("paper.upload", (files) => {
       this.initFileLayer(files[0]);
     });
 
-    EventBus.$on("collection.load", (collection) => {
-      this.loadCollection(collection);
+    EventBus.$on("paper.load", (c) => {
+      this.loadCollection(c);
     });
 
-    EventBus.$on("collection.create", (data) => {
+    EventBus.$on("paper.create", (data) => {
       this.createCollection(data);
     });
 
-    EventBus.$on("collection.update", () => {
+    EventBus.$on("paper.update", () => {
       this.updateCollection();
     });
   },
@@ -135,13 +135,14 @@ export default {
         }
       }
 
-      if (collection.data) {
-        this.project.activeLayer.importJSON(collection.data);
+      if (collection.page.data) {
+        this.project.activeLayer.importJSON(collection.page.data);
       } else {
         this.project.activeLayer.removeChildren();
       }
     },
     createCollection: function(collection) {
+      console.log('create')
       var data = this.project.activeLayer.exportJSON();
       var image = null;
       if (this.imageUploaded) {
@@ -152,6 +153,7 @@ export default {
       EventBus.$emit("collection.data", collection);
     },
     updateCollection: function() {
+      console.log('update')
       var data = this.project.activeLayer.exportJSON();
       var image = null;
       if (this.imageUploaded) {

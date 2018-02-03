@@ -1,16 +1,17 @@
 <script src="./updater.js"></script>
 <template>
   <div>
-    <div v-if="hasCollection" >
-      <span>{{collection.title}}</span>
-      <v-btn icon @click="update()" title="Update">
-        <v-icon color="grey">save</v-icon>
-      </v-btn>
-    </div>
-    <v-dialog v-model="dialog" persistent max-width="500px" v-else
+    <v-layout row>
+      <div v-if="hasCollection">
+        <span>{{collection.title}}</span>
+        <v-btn icon @click="update()" title="Update">
+          <v-icon color="grey">save</v-icon>
+        </v-btn>
+      </div>
+      <v-dialog v-model="dialog" persistent max-width="500px"
       title="Save">
       <v-btn icon slot="activator">
-        <v-icon color="grey">save</v-icon>
+        <v-icon color="grey">add</v-icon>
       </v-btn>
       <v-card>
         <v-card-title>
@@ -35,5 +36,6 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    </v-layout>
   </div>
 </template>

@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     create: function() {
-      EventBus.$emit('collection.create', {
+      EventBus.$emit('paper.create', {
         title: this.title,
         des: this.des
       });
@@ -21,11 +21,11 @@ export default {
       this.dialog = false;
     },
     update: function() {
-      EventBus.$emit('collection.update');
+      EventBus.$emit('paper.update');
     }
   },
   created: function() {
-    EventBus.$on("collection.load", (collection) => {
+    EventBus.$on("paper.load", (collection) => {
       this.hasCollection = collection ? true : false;
       this.collection = collection;
     });
