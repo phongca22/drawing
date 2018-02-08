@@ -1,5 +1,5 @@
 import {EventBus} from '../bus/bus.js'
-import axios from 'axios';
+import CollectionService from './collectionService.js'
 
 export default {
   name: 'collection',
@@ -20,7 +20,6 @@ export default {
   },
   created: function() {
     EventBus.$on("collection.data", (co) => {
-      console.log('event')
       if (this.selectedCollection) {
         this.updateCollection(co);
       } else {
@@ -34,38 +33,40 @@ export default {
     selectCollection: function(collection) {
       this.open = false;
       this.selectedCollection = collection;
-      EventBus.$emit("paper.load", collection);
+      if (collection._loaded) {
+        EventBus.$emit("paper.load", collection);
+      } else {
+        CollectionService.getPage(collection, response => {
+          collection.page = response;
+          collection._loaded = true;
+          EventBus.$emit("paper.load", collection);
+        });
+      }
     },
     createCollection: function(co) {
       co.flex = 4;
       this.list.push(co);
+      CollectionService.createCollection(co, response => {
+
+      });
     },
     updateCollection: function(co) {
-      this.selectedCollection.page.drawFileContentType = co.data;
+      this.selectedCollection.page.drawFileContentType = co.drawFileContentType;
       if (co.image) {
         this.selectedCollection.image = co.image;
       }
 
-      axios.put('http://localhost:8081/api/pages', this.selectedCollection.page)
-      .then(response => {
-      })
-      .catch(e => {
-      })
-
-      this.$toasted.global.appSuccess({message: "Saved"});
+      CollectionService.updateCollection(this.selectedCollection.page, response => {
+        this.$toasted.global.appSuccess({message: "Saved"});
+      });
     },
     fetch: function() {
-      axios.get('http://localhost:8081/api/collections')
-      .then(response => {
+      CollectionService.getAll(response => {
         this.list = response.data.map(function(c){
           c.title = c.collectionName;
           return c;
         });
-
-        this.fetchPages();
-      })
-      .catch(e => {
-      })
+      });
     },
     fetchPages: function() {
       axios.get('http://localhost:8081/api/pages')
@@ -83,7 +84,7 @@ export default {
         });
       })
       .catch(e => {
-        console.log(e)
+        console.log(e);
       })
     }
   },

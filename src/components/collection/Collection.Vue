@@ -13,9 +13,8 @@
         v-bind:style="{width: list.length * 250 + 'px'}">
         <v-layout row wrap>
           <v-flex
-            v-bind="{ [`xs${card.flex}`]: true }"
             v-for="card in list"
-            :key="card.title">
+            :key="card.title" xs4>
             <v-card>
               <v-card-media
                 :src="card.image"

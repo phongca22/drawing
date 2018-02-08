@@ -135,14 +135,13 @@ export default {
         }
       }
 
-      if (collection.page.data) {
-        this.project.activeLayer.importJSON(collection.page.data);
+      if (collection.page.drawFileContentType) {
+        this.project.activeLayer.importJSON(collection.page.drawFileContentType);
       } else {
         this.project.activeLayer.removeChildren();
       }
     },
     createCollection: function(collection) {
-      console.log('create')
       var data = this.project.activeLayer.exportJSON();
       var image = null;
       if (this.imageUploaded) {
@@ -153,7 +152,6 @@ export default {
       EventBus.$emit("collection.data", collection);
     },
     updateCollection: function() {
-      console.log('update')
       var data = this.project.activeLayer.exportJSON();
       var image = null;
       if (this.imageUploaded) {
@@ -161,7 +159,7 @@ export default {
       }
 
       EventBus.$emit("collection.data", {
-        data: data,
+        drawFileContentType: data,
         image: image
       });
     }
