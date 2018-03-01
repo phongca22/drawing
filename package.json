@@ -21,7 +21,7 @@
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vue-toasted": "^1.1.24",
-    "vuetify": "^0.17.6"
+    "vuetify": "^1.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

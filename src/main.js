@@ -15,34 +15,34 @@ Vue.use(Vuetify)
 Vue.use(Toasted)
 
 Vue.toasted.register('appSuccess', (payload) => {
-  if (payload.message) {
-    return payload.message
-  } else {
-    return 'Success'
-  }
+    if (payload.message) {
+        return payload.message
+    } else {
+        return 'Success'
+    }
 }, {
-  type: 'success',
-  icon: 'check',
-  position: 'bottom-right',
-  duration: 2000
+    type: 'success',
+    icon: 'check',
+    position: 'bottom-right',
+    duration: 2000
 })
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyDa-ze_65ozwE0HZOAWWbemoozlHXfhK1k',
-  authDomain: 'cool-box-2a8b7.firebaseapp.com',
-  databaseURL: 'https://cool-box-2a8b7.firebaseio.com',
-  projectId: 'cool-box-2a8b7',
-  storageBucket: 'https://cool-box-2a8b7.firebaseio.com',
-  messagingSenderId: '619430236261',
-  serverKey: 'AAAAkDjrUGU:APA91bFb73qaRDFFPzTwgf1H2mwsLKd-_HN10JJ5Hg9QyYuiyZUFPJxQWKi_ki-Cd82NVS9vWfdZlPw3ZHveK_7jxrklHl3U3R_wt2Q7JKWUYRGgW5lR8rmokl2bpzrXl4kNMEyaW-vI'
+    apiKey: 'AIzaSyDa-ze_65ozwE0HZOAWWbemoozlHXfhK1k',
+    authDomain: 'cool-box-2a8b7.firebaseapp.com',
+    databaseURL: 'https://cool-box-2a8b7.firebaseio.com',
+    projectId: 'cool-box-2a8b7',
+    storageBucket: 'https://cool-box-2a8b7.firebaseio.com',
+    messagingSenderId: '619430236261',
+    serverKey: 'AAAAkDjrUGU:APA91bFb73qaRDFFPzTwgf1H2mwsLKd-_HN10JJ5Hg9QyYuiyZUFPJxQWKi_ki-Cd82NVS9vWfdZlPw3ZHveK_7jxrklHl3U3R_wt2Q7JKWUYRGgW5lR8rmokl2bpzrXl4kNMEyaW-vI'
 })
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: {
-    App
-  }
+    el: '#app',
+    router,
+    template: '<App/>',
+    components: {
+        App
+    }
 })
