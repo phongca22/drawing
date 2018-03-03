@@ -6,7 +6,7 @@ export default {
         selectFile: function() {
             this.$refs.inputElement.click();
         },
-        processFile: function() {
+        processFile: function(event) {
             EventBus.$emit("paper.upload", event.target.files);
             this.$refs.inputElement.value = '';
         }
