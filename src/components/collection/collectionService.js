@@ -16,7 +16,7 @@ function Service () {
             }, {
                 id: 3,
                 title: 'abc',
-                image: 'https://orig00.deviantart.net/cdb3/f/2014/002/6/9/pencil_drawing_mash_up_by_art_by_doc-d70hvyg.jpg',
+                image: 'https://cdn.lynda.com/course/485650/485650-636413478194188790-16x9.jpg',
                 flex: 4
             }]
         })

@@ -34,7 +34,7 @@
                             </v-card-actions>
                         </v-card>
                     </v-flex>
-                    <v-flex v-for="card in emptyList" xs4>
+                    <v-flex v-for="card in emptyList" xs4 :key="card">
                         <v-btn icon>
                             <v-icon color="grey">add</v-icon>
                         </v-btn>

@@ -24,7 +24,6 @@ export default {
     },
     methods: {
         selectCollection: function(collection) {
-            console.log(collection)
             this.open = false;
             this.selectedCollection = collection;
             if (collection._loaded) {
@@ -73,9 +72,8 @@ export default {
 
             if (this.selectedCollection && co.id == this.selectedCollection.id) {
                 EventBus.$emit("paper.clean");
+                this.selectCollection = null;
             }
-
-            this.selectCollection = null;
         },
         fetch: function() {
             CollectionService.getAll(response => {
