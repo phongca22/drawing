@@ -139,8 +139,8 @@ export default {
                 }
             }
 
-            if (collection.page.content) {
-                this.project.activeLayer.importJSON(collection.page.content);
+            if (collection._content) {
+                this.project.activeLayer.importJSON(collection._content);
             } else {
                 this.project.activeLayer.removeChildren();
             }
@@ -168,7 +168,6 @@ export default {
             });
         },
         clean: function() {
-            console.log('clean')
             if (this.imageLayer) {
                 this.imageLayer.removeChildren();
             }

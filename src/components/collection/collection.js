@@ -1,5 +1,6 @@
 import {EventBus} from '../bus/bus.js'
-import CollectionService from './collectionService.js'
+import CollectionService from './collection.service.js'
+import PageService from './page.service.js';
 
 export default {
     name: 'collection',
@@ -23,16 +24,17 @@ export default {
         this.fetch();
     },
     methods: {
-        selectCollection: function(collection) {
+        selectCollection: function(co) {
             this.open = false;
-            this.selectedCollection = collection;
-            if (collection._loaded) {
-                EventBus.$emit("paper.load", collection);
+            this.selectedCollection = co;
+            if (co._loaded) {
+                EventBus.$emit("paper.load", co);
             } else {
-                CollectionService.getPage(collection, response => {
-                    collection.page = response;
-                    collection._loaded = true;
-                    EventBus.$emit("paper.load", collection);
+                PageService.getPage(co.collectionId, response => {
+                    co._page = response.data[0];
+                    co._content = response.data[0].drawFileContentType;
+                    co._loaded = true;
+                    EventBus.$emit("paper.load", co);
                 });
             }
         },
@@ -43,18 +45,24 @@ export default {
             for (var i = 0; i < 3 - this.list.length; i++) {
                 this.emptyList.push(i);
             }
-            // CollectionService.createCollection(co, response => {
-            // });
+
+            CollectionService.createCollection(co, response => {
+                this.createPage(co);
+            });
         },
         updateCollection: function(co) {
-            this.selectedCollection.page.content = co.content;
+            // this.selectedCollection.page.content = co.content;
             if (co.image) {
                 this.selectedCollection.image = co.image;
             }
 
-            // CollectionService.updateCollection(this.selectedCollection.page, response => {
-            //     this.$toasted.global.appSuccess({message: "Saved"});
-            // });
+            var page = this.selectedCollection._page;
+            page.drawFileContentType = co.content;
+            page.drawFile = co.image;
+
+            PageService.updatePage(page, response => {
+                this.$toasted.global.appSuccess({message: "Updated"});
+            });
         },
         deleteCollection: function(co) {
             var list = [];
@@ -70,16 +78,20 @@ export default {
                 this.emptyList.push(i);
             }
 
-            if (this.selectedCollection && co.id == this.selectedCollection.id) {
-                EventBus.$emit("paper.clean");
-                this.selectCollection = null;
-            }
+            CollectionService.deleteCollection(co.id, response => {
+                if (this.selectedCollection && co.id == this.selectedCollection.id) {
+                    EventBus.$emit("paper.clean");
+                    this.selectCollection = null;
+                }
+
+                this.$toasted.global.appSuccess({message: "Deleted"});
+            });
         },
         fetch: function() {
             CollectionService.getAll(response => {
-                this.list = response.data.map(function(c){
-                    // c.title = c.collectionName;
-                    return c;
+                this.list = response.data.map(co => {
+                    co.name = co.collectionName;
+                    return co;
                 });
             });
 
@@ -87,24 +99,13 @@ export default {
                 this.emptyList.push(i);
             }
         },
-        fetchPages: function() {
-            axios.get('http://localhost:8081/api/pages')
-            .then(response => {
-                this.list = this.list.map(c => {
-                    for (var i = 0; i < response.data.length; i++) {
-                        if (response.data[i].collectionId == c.collectionId) {
-                            c.page = response.data[i];
-                            c.page.data = c.page.drawFileContentType;
-                            break;
-                        }
-                    }
-
-                    return c;
-                });
-            })
-            .catch(e => {
-                console.log(e);
-            })
+        createPage: function(co) {
+            PageService.createPage({
+                collectionId: co.collectionId,
+                pageId: co.collectionId + new Date().getTime()
+            }, response => {
+                console.log(repsonse)
+            });
         }
     },
 }

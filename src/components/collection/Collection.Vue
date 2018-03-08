@@ -12,15 +12,15 @@
             <v-container fluid grid-list-md class="grey lighten-4"
                 style="width: 750px">
                 <v-layout row wrap>
-                    <v-flex v-for="card in list" :key="card.title" xs4>
+                    <v-flex v-for="card in list" :key="card.id" xs4>
                         <v-card>
                             <v-card-media :src="card.image" height="140px"></v-card-media>
                             <div class="grey--text caption ma-2"
                                 style="text-align: right">1/3</div>
                             <v-card-title style="padding-top: 0px; padding-bottom: 0px">
                                 <div>
-                                    <h3 class="mb-0">{{card.title}}</h3>
-                                    <div class="grey--text caption">Located two hours south of Sydney in the <br>Southern Highlands of New South Wales, ...</div>
+                                    <h3 class="mb-0">{{card.name}}</h3>
+                                    <div class="grey--text caption">Southern Highlands of New South Wales, ...</div>
                                 </div>
                             </v-card-title>
                             <v-card-actions class="white">

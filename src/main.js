@@ -1,31 +1,31 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
-import Vuetify from 'vuetify'
-import firebase from 'firebase'
-import Toasted from 'vue-toasted'
+import Vue from 'vue';
+import App from './App';
+import router from './router';
+import Vuetify from 'vuetify';
+import firebase from 'firebase';
+import Toasted from 'vue-toasted';
 
-import 'vuetify/dist/vuetify.min.css'
-import 'mdi/css/materialdesignicons.min.css'
+import 'vuetify/dist/vuetify.min.css';
+import 'mdi/css/materialdesignicons.min.css';
 
-Vue.config.productionTip = false
-Vue.use(Vuetify)
-Vue.use(Toasted)
+Vue.config.productionTip = false;
+Vue.use(Vuetify);
+Vue.use(Toasted);
 
 Vue.toasted.register('appSuccess', (payload) => {
     if (payload.message) {
-        return payload.message
+        return payload.message;
     } else {
-        return 'Success'
+        return 'Success';
     }
 }, {
     type: 'success',
     icon: 'check',
     position: 'bottom-right',
     duration: 2000
-})
+});
 
 firebase.initializeApp({
     apiKey: 'AIzaSyDa-ze_65ozwE0HZOAWWbemoozlHXfhK1k',
@@ -35,7 +35,7 @@ firebase.initializeApp({
     storageBucket: 'https://cool-box-2a8b7.firebaseio.com',
     messagingSenderId: '619430236261',
     serverKey: 'AAAAkDjrUGU:APA91bFb73qaRDFFPzTwgf1H2mwsLKd-_HN10JJ5Hg9QyYuiyZUFPJxQWKi_ki-Cd82NVS9vWfdZlPw3ZHveK_7jxrklHl3U3R_wt2Q7JKWUYRGgW5lR8rmokl2bpzrXl4kNMEyaW-vI'
-})
+});
 
 /* eslint-disable no-new */
 new Vue({
@@ -45,4 +45,4 @@ new Vue({
     components: {
         App
     }
-})
+});

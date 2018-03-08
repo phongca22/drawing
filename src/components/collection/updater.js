@@ -7,20 +7,23 @@ export default {
             dialog: false,
             collection: null,
             hasCollection: false,
-            title: '',
-            des: ''
+            name: '',
+            des: '',
+            collectionId: ''
         }
     },
     methods: {
         create: function() {
             EventBus.$emit('paper.create', {
-                title: this.title,
-                des: this.des
+                name: this.name,
+                des: this.des,
+                collectionId: this.collectionId
             });
 
             this.dialog = false;
-            this.title = '';
+            this.name = '';
             this.des = '';
+            this.collectionId = '';
         },
         update: function() {
             EventBus.$emit('paper.update');

@@ -23,7 +23,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'indent': [2, 4],
     'quotes': [2, 'single'],
-    'semi': [2, 'never'],
+    'semi': ['error', 'always'],
     'brace-style': [2, '1tbs'],
     'array-bracket-spacing': [2, 'never'],
     'camelcase': [2, {'properties': 'always'}],

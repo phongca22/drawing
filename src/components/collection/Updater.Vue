@@ -3,7 +3,7 @@
     <div>
         <v-layout row>
             <div v-if="hasCollection">
-                <span>{{collection.title}}</span>
+                <span>{{collection.name}}</span>
                 <v-btn icon @click="update()" title="Update">
                     <v-icon color="grey">save</v-icon>
                 </v-btn>
@@ -21,7 +21,10 @@
                     <v-container grid-list-md>
                         <v-layout wrap>
                             <v-flex xs12>
-                                <v-text-field label="Title" v-model="title" required></v-text-field>
+                                <v-text-field label="Name" v-model="name" required></v-text-field>
+                            </v-flex>
+                            <v-flex xs12>
+                                <v-text-field label="Collection Id" v-model="collectionId"></v-text-field>
                             </v-flex>
                             <v-flex xs12>
                                 <v-text-field label="Description" v-model="des"></v-text-field>
