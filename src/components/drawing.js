@@ -7,6 +7,8 @@ import Login from './auth/Login.vue'
 import Uploader from './file/Uploader.vue'
 import Collection from './collection/Collection.vue'
 import CollectionUpdater from './collection/Updater.vue'
+import Redo from './editor/redo/Redo.vue'
+import Undo from './editor/undo/Undo.vue'
 
 export default {
     name: 'drawing',
@@ -23,7 +25,9 @@ export default {
         Login,
         Uploader,
         Collection,
-        CollectionUpdater
+        CollectionUpdater,
+        Redo,
+        Undo
     },
     created: function() {
         EventBus.$on('disableUndo', () => {
