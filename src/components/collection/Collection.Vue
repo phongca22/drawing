@@ -2,13 +2,13 @@
 <template>
     <div>
         <v-layout row>
-            <v-dialog v-model="dialog" persistent max-width="80%"
+            <v-dialog v-model="dialog" persistent max-width="80%" :hideOverlay="true"
                 title="Collection">
                 <v-btn icon slot="activator">
                     <v-icon>view_module</v-icon>
                 </v-btn>
                 <v-card>
-                    <v-card-title>
+                    <v-card-title style="background: #E0E0E0" class="elevation-1">
                         <v-layout row>
                             <v-layout column>
                                 <div class="title"><strong>ALBUMS</strong></div>
@@ -21,9 +21,6 @@
                             </v-btn>
                         </v-layout>
                     </v-card-title>
-                    <div>
-                        <v-divider></v-divider>
-                    </div>
                     <div>
                         <v-container fluid v-bind="{ [`grid-list-${size}`]: true }">
                             <v-layout row wrap>
