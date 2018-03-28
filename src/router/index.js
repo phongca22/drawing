@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Drawing from '../components/Drawing.vue';
+import Drawing from '../components/main/Drawing.vue';
 
 Vue.use(Router);
 

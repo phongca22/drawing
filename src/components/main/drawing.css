@@ -1,0 +1,21 @@
+.drawing-paper-w {
+    background: rgb(235, 231, 228);
+}
+
+.drawing-paper-panel {
+    background: #fff;
+}
+
+.drawing-main-sct {
+    position: relative;
+}
+
+.drawing-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}

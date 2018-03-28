@@ -1,0 +1,7 @@
+.user-menu-w {
+    width: 0px;
+}
+
+.user-menu-w.is-open {
+    width: 30em;
+}

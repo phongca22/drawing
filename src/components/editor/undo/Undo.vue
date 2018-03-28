@@ -7,5 +7,3 @@
 </template>
 
 <script src="./undo.js"></script>
-<style>
-</style>

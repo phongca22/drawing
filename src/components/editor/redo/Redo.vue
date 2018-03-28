@@ -7,5 +7,3 @@
 </template>
 
 <script src="./redo.js"></script>
-<style>
-</style>
