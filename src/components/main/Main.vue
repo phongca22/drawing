@@ -3,7 +3,8 @@
         <v-layout row>
             <UserMenu />
             <v-layout column class="drawing-main-sct">
-                <div class="drawing-overlay" v-if="!showMenuBtn"></div>
+                <div class="drawing-overlay" v-if="!showMenuBtn"
+                    v-on:click="closeMenu()"></div>
                 <v-toolbar dark color="primary">
                     <v-toolbar-side-icon v-show="showMenuBtn" @click="openMenu"></v-toolbar-side-icon>
                     <v-toolbar-title class="white--text">New Album</v-toolbar-title>
@@ -33,5 +34,5 @@
     </v-app>
 </template>
 
-<script src="./drawing.js"></script>
-<style src="./drawing.css"></style>
+<script src="./main.js"></script>
+<style src="./main.css"></style>

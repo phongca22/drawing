@@ -50,6 +50,9 @@ export default {
         },
         openMenu: function() {
             EventBus.$emit('user-menu.open');
+        },
+        closeMenu: function() {
+            EventBus.$emit('user-menu.close');
         }
     }
 }

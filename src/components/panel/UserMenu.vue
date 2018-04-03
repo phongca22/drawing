@@ -2,7 +2,7 @@
     <div class="user-menu-w" v-bind:class="{'is-open': isOpen}">
         <v-layout column>
             <v-layout row align-center>
-                <v-avatar size="56px" class="ma-2">
+                <v-avatar size="46px" class="ma-2">
                     <img src="https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
                         alt="">
                 </v-avatar>
